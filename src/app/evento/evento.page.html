@@ -1,0 +1,95 @@
+<ion-header>
+  <navapp></navapp>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="arrow-round-up"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button routerLink="/form-evento">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="listandoEventos()">
+        <ion-icon name="sync"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab> -->
+
+  <ion-button routerLink="/form-evento" expand="block" style="margin-left: 4%;margin-right: 4%;">Cadastrar novo evento</ion-button>
+
+  <p align="center" style="font-size: 150%;"><b>Lista de Eventos</b></p>
+
+
+  <div class="visita" *ngFor="let item of eventos" >
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <label><b>Nome do evento:</b> {{item.name}}</label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <label><b>Local:</b> {{item.place}} </label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <label><b>Logradouro:</b> {{item.address.logradouro}}</label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <label><b>Complemento:</b> {{item.address.complement}}</label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <label><b>Numero:</b> {{item.address.number}}</label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <label><b>Data:</b> {{item.date | date:'dd/ MM/ yyyy'}}</label>
+        </ion-col>
+        <ion-col>
+          <label><b>Horario:</b> {{item.hour}}</label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <label><b>Agente:</b> {{item.agent.name}} </label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <label><b>Descrição:</b> {{item.description}} </label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          
+          <ion-button color="dark" (click)="openImageLink(item.image_link)"> Link das imagens </ion-button>
+          <!-- <label><a><b><button (click)="junk()">Link das imagens</button></b> </a></label> -->
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          
+          <ion-button color="warning" (click)="goToEditEvent(item.id)"> <span style="color:black"> Editar evento </span> </ion-button>
+          <!-- <label><a><b><button (click)="junk()">Link das imagens</button></b> </a></label> -->
+        </ion-col>
+      </ion-row>
+      
+    </ion-grid>
+
+
+
+
+  </div>
+  <h1 align="center" *ngIf="vazio==true" class="visita" style="border-radius:5px;padding:5px">Sem eventos cadastrados</h1>
+
+
+</ion-content>

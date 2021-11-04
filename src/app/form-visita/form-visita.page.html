@@ -1,0 +1,103 @@
+<ion-header>
+  <navapp></navapp>
+</ion-header>
+<ion-content padding>
+  <h2 align="center">Cadastro de Visita</h2>
+
+  <ion-item *ngIf="family">
+    <ion-label position="floating">NIS</ion-label>
+    <ion-input disabled [(ngModel)]="family.nis"></ion-input>
+  </ion-item>
+
+  <!-- <ion-list *ngIf="members">
+    <ion-item>
+      <strong> Membros presentes </strong>
+    </ion-item>
+    
+    <ion-item *ngFor="let member of members">
+      <ion-label>{{member.name}}</ion-label>
+      <ion-checkbox (ionChange)="checkboxHandler($event)"></ion-checkbox>
+    </ion-item>
+  </ion-list> -->
+
+  <ion-item>
+    <label>Data da visita</label><br>
+    <input [(ngModel)]="visit.date" type="date" ><br><br>
+  </ion-item>
+
+  <ion-item>
+    <label>Horário da visita </label><br>
+    <input [(ngModel)]="visit.time" type="time" ><br><br>
+  </ion-item>
+
+  <br />
+
+  <!-- <ion-list *ngIf="activities">
+    <ion-item>
+      <strong> Atividades realizadas </strong>
+    </ion-item>
+    
+    <ion-item *ngFor="let activity of activities">
+      <ion-label>{{activity.label}}</ion-label>
+      <ion-checkbox ></ion-checkbox>
+    </ion-item>
+  </ion-list> -->
+
+  <!-- atividades realizadas -->
+  <ion-button color="dark" expand="full" (click)="presentAlertCheckboxActivities()"> Selecionar atividades realizadas </ion-button>
+
+  <ion-list>
+    <ion-item>
+      <strong> Atividades realizadas </strong>
+    </ion-item>
+    
+    <ion-item *ngFor="let selectedActivity of selectedActivities">
+      <ion-label> {{ selectedActivity.label }} </ion-label>
+    </ion-item>
+  </ion-list>
+
+
+  <div style="margin: 8px">
+    <div>Comentarios</div>
+    <textarea style="width: 100%;" [(ngModel)]="visit.comments" placeholder="Escreva os comentarios aqui" rows="5" maxLength="200"></textarea>
+  </div>
+
+  <ion-item>
+    <ion-label position="floating">Link da imagem</ion-label>
+    <ion-input [(ngModel)]="visit.image_link"></ion-input>
+  </ion-item>
+
+  <br/>
+
+  <ion-button color="dark" expand="full" (click)="presentActionSheetBooks()"> Selecionar livros utilizados </ion-button>
+
+  <ion-list>
+    <ion-item>
+      <strong> Livros usados </strong>
+    </ion-item>
+    
+    <ion-item *ngFor="let selectedBook of selectedBooks">
+      <ion-label> {{ selectedBook.name }} <br/> isbn: {{ selectedBook.isbn }} </ion-label>
+      <ion-button color="danger" expand="full" (click)="removeBook(selectedBook)"> Remover </ion-button>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-button color="dark" expand="full" (click)="presentActionSheetParticipant()"> Adicionar Participante </ion-button>
+
+  <ion-list>
+    <ion-item>
+      <strong> Participantes </strong>
+    </ion-item>
+    
+    <ion-item *ngFor="let participant of participants">
+      <ion-label> {{ participant.name }} </ion-label>
+      <ion-button color="danger" expand="full" (click)="removeParticipant(participant)"> Remover </ion-button>
+    </ion-item>
+  </ion-list>
+  
+
+  <ion-button expand="full" (click)="cadastrar()"> Cadastrar visita </ion-button>
+  
+
+</ion-content>

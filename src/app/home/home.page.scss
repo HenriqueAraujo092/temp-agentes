@@ -1,0 +1,28 @@
+.welcome-card img {
+  max-height: 35vh;
+  overflow: hidden;
+}
+.img_user{
+  padding-left: 5%;
+  padding-top: 5%;
+  max-width: 30%;
+}
+.nomeSuperior{
+  font-size: 100%;
+  background-color: rgba(190, 190, 190, 0.239);
+  border-radius: 10px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 8%;
+  padding: 2%;
+}
+#nomeMaior{
+  font-size: 130%;
+}
+.slide{
+  height: 300px;
+  background-color: grey;
+}
+.card{
+  background: rgba($color: #008800ca, $alpha: 0.75);
+}

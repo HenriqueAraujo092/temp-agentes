@@ -1,0 +1,117 @@
+<ion-header>
+  <navapp></navapp>
+</ion-header>
+<ion-content fullscreen>
+  <h2 align="center">Cadastro de Visita</h2>
+  <div class="form">
+    <div class="tela1" *ngIf="ocultar==false">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <label for="">NIS :</label>
+            <input type="text" [(ngModel)]="visita.nis" disabled>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <label for="">Data :</label>
+            <input type="date" [(ngModel)]="visita.data">
+          </ion-col>
+          <ion-col>
+            <label for="">Horario :</label>
+            <input type="time" [(ngModel)]="visita.hora">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <label for="">N° de membros da familia presentes :</label>
+            <input type="number" [(ngModel)]="visita.num_cadastrados">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <label for="">N° de pessoas atendidas :</label>
+            <input type="number" [(ngModel)]="visita.num_atendidos">
+          </ion-col>
+        </ion-row>
+        <hr>
+        <h6 style="margin-left:2%"><b>Atividade desenvolvida com a família:</b></h6>
+        <ion-row>
+
+          <ion-col>
+            <label for="">Titulo do livro :</label>
+            <input type="text" [(ngModel)]="visita.titulo">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <label for="">Autor :</label>
+            <input type="text" [(ngModel)]="visita.autor">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <label for="">Editora :</label>
+            <input type="text" [(ngModel)]="visita.editora">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <hr>
+            <button class="btn" style="float: right;" (click)="avancar()">Avançar</button>
+          </ion-col>
+        </ion-row>
+        <hr>
+
+      </ion-grid>
+
+    </div>
+
+    <div class='tela2' *ngIf="ocultar==true">
+      <ion-grid>
+        <h6><b>Atividade desenvolvida - Assinale uma ou mais alternativas:</b></h6>
+        <ion-row>
+          <ul>
+            <li>
+               <input id="cont_hist" type="checkbox" [(ngModel)]="campo1" name="atividade"><label for="cont_hist">Contação de história</label>
+            </li>
+            <li>
+              <input id="srau_lit" type="checkbox" [(ngModel)]="campo2" name="atividade"><label for="srau_lit">Sarau Literário</label>
+            </li>
+            <li>
+              <input id="le_com" type="checkbox" [(ngModel)]="campo3" name="atividade"><label for="le_com">Leitura compartilhada</label>
+            </li>
+            <li>
+              <input id="emp_liv" type="checkbox" [(ngModel)]="campo4" name="atividade"><label for="emp_liv">Empréstimo de livro</label>
+            </li>
+            <li>
+              <input id="outros" type="checkbox" [(ngModel)]="campo5" name="atividade"><label for="outros">Outros</label>
+            </li>
+          </ul>
+           <input type="text" name="atividade" *ngIf="campo5==true" [(ngModel)]="outros"  placeholder="   Especificar outros...">
+        </ion-row>
+        <hr>
+        <ion-row>
+          <ion-col>
+            <textarea  [(ngModel)]="visita.comentario"  class="comentario" placeholder="Digite um comentário"></textarea>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+
+          <ion-col style="margin-top: 3%;">
+            <label for="">Link das imagens:</label>
+            <input type="text" [(ngModel)]="visita.link_imagens">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <hr>
+            <button class="btn" style="" (click)="avancar()">Voltar</button>
+            <button class="btn" (click)="verificar()"  style="float:right">Salvar</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+  
+</ion-content>

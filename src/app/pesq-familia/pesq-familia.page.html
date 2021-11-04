@@ -1,0 +1,21 @@
+<ion-header>
+  <navapp></navapp>
+</ion-header>
+
+<ion-content>
+  <ion-button routerLink="/form-familia" expand="block" style="margin-left: 4%;margin-right: 4%;">Cadastrar nova familia</ion-button>
+  
+  <ion-card>
+    <ion-card-header>   
+     <h1 style="color:black">Pesquisar família</h1>
+    </ion-card-header>
+    <ion-card-content>
+      <input type="text" class="input" [(ngModel)]="nis" placeholder="  Digite o nis:">
+      <ion-button (click)="pesquisar()"  expand="block" size="small" style="margin-left: 4%;margin-right: 4%;margin-top: 5%;">Pesquisar</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- <ion-button routerLink="/form-familia" expand="block" fill="outline" style="margin-left: 4%;margin-right: 4%;">Cadastrar nova familia</ion-button> -->
+  
+
+</ion-content>

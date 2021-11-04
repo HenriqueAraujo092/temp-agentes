@@ -1,0 +1,53 @@
+<ion-header>
+  <navapp></navapp>
+</ion-header>
+
+<ion-content>
+  <div class="nomeSuperior" align=center>
+    <label id="nomeMaior">{{agent.name}}</label><br>
+    <label>Agente de leitura</label>
+  </div> 
+  <div class="informacoes"  *ngIf="agente!=null" >
+    
+      <h3 style="padding-top:3%;margin-left:5%">Dados Pessoais: </h3>
+      <ul class="dados">
+        <li><b>Nome:</b> {{ agent.name }}</li>
+        <li><b>RG:</b> {{agent.rg}}</li>
+        <li><b>CPF:</b> {{agent.cpf}}</li>
+        <li><b>Telefone:</b> {{agent.phone}}</li>
+ 
+        
+      </ul>
+      <hr class="hr">
+      <h3 style="margin-left:5%">Endereço:</h3>
+      <ul class="dados">
+        <li><b>Rua:</b> {{address.logradouro}}</li>
+        <li><b>Número:</b> {{address.number}}</li>
+        <li><b>CEP:</b> {{address.cep}}</li>
+        <li><b>Bairro:</b> {{neighborhood.name}}</li>
+        <li><b>Cidade:</b> {{city.name}}</li>
+        
+      </ul>
+      <hr class="hr">
+        <h3 style="padding-top:3%;margin-left:5%">Dados da Conta</h3>
+        <ul class="dados">
+          <li><b>Banco:</b> {{agent.bank}}</li>
+          <li><b>Agência:</b> {{agent.bank_agency}}</li>
+          <li><b>Número da conta:</b> {{agent.bank_account_number}}</li>
+          <li><b>Tipo de conta:</b> {{agent.bank_account_type}}</li>
+          
+        </ul>
+        <hr class="hr">
+        <h3 style="margin-left:5%">Redes Sociais :</h3>
+        <ul class="dados">
+          <li><b>Facebook:</b> {{agent.facebook}}</li>
+          <li><b>Instagram:</b> {{agent.instagram}}</li>
+          <li><b>Twitter:</b> {{agent.twitter}}</li>
+          <li><b>Whatsapp:</b> {{agent.whatsapp}}</li>
+          <!-- <li><b>E-mail:</b> {{agent.email}}</li> -->
+          
+        </ul><br><br>
+    
+  </div>
+ 
+</ion-content>

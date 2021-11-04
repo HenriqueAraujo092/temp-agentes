@@ -1,0 +1,27 @@
+<ion-app>
+  <ion-split-pane>
+    <ion-menu type="overlay" menuId='first'>
+      <ion-header class="superior">
+       <div class="text">
+        <h3 align="center"> {{ nomeUser | uppercase }}</h3>
+        <h6 align="center">{{ funcaoUser }}</h6>
+          
+
+       </div>
+      </ion-header>
+      <ion-content>
+        <button class="button" routerLink="/home"         (click)="fechar()" >Pagina Inicial</button>
+        <button class="button" routerLink="/pesq-familia" (click)="fechar()" >Consultar Família</button>
+        <button class="button" routerLink="/pesq-visita"  (click)="fechar()">Listar Visitas</button>
+        <button class="button" routerLink="/evento"       (click)="fechar()" >Listar Eventos</button>
+        <button class="button" routerLink="/agente"       (click)="fechar()" >Perfil</button>
+
+        
+      </ion-content>
+      <button  id='btn-sair' (click)="logout()" >Sair</button>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+
+  
+</ion-app>

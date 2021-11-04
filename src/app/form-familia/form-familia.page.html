@@ -1,0 +1,111 @@
+<ion-header>
+    <navapp></navapp>
+</ion-header>
+
+<ion-content padding>
+
+    <!-- <h2 align="center">Cadastro da familia </h2> -->
+
+    <ion-row>
+
+        <ion-col> 
+            <ion-item>
+                <ion-label position="floating">CEP</ion-label>
+                <ion-input [(ngModel)]="cep"></ion-input>
+            </ion-item>
+        </ion-col>
+
+        <ion-col> 
+            <ion-button (click)="findCep()" color="primary"> Pesquisar </ion-button>
+        </ion-col>
+
+    </ion-row>
+
+
+    <ion-item>
+        <ion-label> Estado </ion-label>
+        <ion-select [(ngModel)]="selectedState" okText="OK" cancelText="Cancelar" (ionChange)="getCitiesFromState($event)">
+            <ion-select-option *ngFor="let state of states" value="{{state.id}}">{{state.name}} - {{state.uf}}</ion-select-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="cities">
+        <ion-label> Cidade </ion-label>
+        <ion-select [(ngModel)]="selectedCity" okText="OK" cancelText="Cancelar" (ionChange)="getNeighborhoodsFromCity($event)">
+            <ion-select-option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</ion-select-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="cities && neighborhoods">
+        <ion-label> Bairro </ion-label>
+        <ion-select [(ngModel)]="selectedNeighborhood" okText="OK" cancelText="Cancelar">
+            <ion-select-option *ngFor="let neighborhood of neighborhoods" value="{{neighborhood.id}}">{{neighborhood.name}}</ion-select-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="floating">Logradouro</ion-label>
+        <ion-input [(ngModel)]="logradouro"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="floating">Numero</ion-label>
+        <ion-input type="number" [(ngModel)]="number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="floating">Complemento</ion-label>
+        <ion-input [(ngModel)]="complement"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+        <ion-label position="floating">Nis</ion-label>
+        <ion-input type="text" [(ngModel)]="family.nis"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="floating">Responsavel da familia</ion-label>
+        <ion-input [(ngModel)]="family.family_responsible"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="floating">Telefone</ion-label>
+        <ion-input [(ngModel)]="family.phone"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label > Acesso ao esgoto </ion-label>
+        <ion-toggle [(ngModel)]="family.sewer_access"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+        <ion-label > Acesso a agua </ion-label>
+        <ion-toggle [(ngModel)]="family.water_access"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+        <ion-label > Acesso a eletricidade </ion-label>
+        <ion-toggle [(ngModel)]="family.electricity_access"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+        <ion-label > Acesso a transporte </ion-label>
+        <ion-toggle [(ngModel)]="family.transport"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+        <ion-label> Renda per capta </ion-label>
+        <ion-select [(ngModel)]="family.revenue_id" okText="OK" cancelText="Cancelar" >
+            <ion-select-option text-wrap style="white-space: pre-wrap !important;" *ngFor="let revenue of revenues" value="{{revenue.id}}"> {{revenue.description}} </ion-select-option>
+        </ion-select>
+    </ion-item>
+
+    <br/>
+    <br/>
+    
+    <ion-button *ngIf="familyNisAlreadyExists" expand="full" (click)="updateFamily()" color="warning"> <span style="color: black;">Salvar alterações</span> </ion-button>
+
+    <ion-button *ngIf="!familyNisAlreadyExists" expand="full" (click)="checar()"> Cadastrar familia </ion-button>
+
+</ion-content>

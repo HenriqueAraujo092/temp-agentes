@@ -1,0 +1,60 @@
+<ion-header>
+  <div style="background-color: green;padding-bottom: 7%;">
+    <img src="../../assets/images/logo.png"  id="brasao">
+  </div>
+   <div style="background-color: orange;padding-top: 2.5%;">
+  </div>
+</ion-header>
+
+<ion-content class="ion-text-center" padding>
+  <div>
+    <img src="../../assets/images/logo_agente.png" alt="logo do agente de leitura" id='logoagente'>
+  </div>
+  <div class="form-login">
+    
+    <!-- <input type="text" class="input" placeholder="CPF" [(ngModel)]="cpf" >
+    <button type="submit" class="input-submit" (click)="logar()" >Entrar</button> -->
+    
+    <!-- <ion-item>
+      <ion-label position="floating">Digite seu CPF</ion-label>
+      <ion-input [(ngModel)]="cpf"></ion-input>
+    </ion-item>
+
+    <br/>
+    
+    <ion-button expand="block" (click)="logar()" color="primary">Entrar</ion-button> -->
+    <ion-item>
+      <ion-label position="floating">Digite seu email</ion-label>
+      <ion-input [(ngModel)]="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Digite sua senha</ion-label>
+      <ion-input [(ngModel)]="password" type="password"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" (click)="createSession()" color="primary">Entrar</ion-button>
+
+    <br/>
+
+    <!-- <div (click)="goToRegister()">
+      <strong> Criar uma conta </strong>
+    </div> -->
+
+    <br/>
+
+    <!-- <div (click)="goToPasswordRecover()">
+      <strong> Recuperar senha </strong>
+    </div> -->
+
+    <br/>
+    <br/>
+
+
+  </div>
+
+  <!-- <ion-button color="light" (click)="googleLogin()">
+    <img height="18" src="../../assets/images/googleLittleIcon.svg" width="18"> &nbsp; Logue-se com Google
+  </ion-button> -->
+ 
+</ion-content>

@@ -1,0 +1,66 @@
+<ion-header>
+ <navapp></navapp>
+</ion-header>
+
+<ion-content>
+  <h2 align="center">Cadastro de Evento</h2>
+    <div class="tela1" *ngIf="ocultar==false">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <label for="">Nome:</label>
+            <input type="text" placeholder="Digite o nome do evento" [(ngModel)]="evento.nome_evento">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <label for="">Data:</label>
+            <input type="date" [(ngModel)]="evento.data">
+          </ion-col>
+          <ion-col>
+            <label for="">Horario:</label>
+            <input type="time" [(ngModel)]="evento.hora">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <label for="">Local:</label>
+            <input type="text" placeholder="Ex : Centro de Eventos, Praça do Ferreira..." [(ngModel)]="evento.local">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <label for="">Endereço:</label>
+            <input type="text" placeholder="Ex: Rua Guilherme Rocha" [(ngModel)]="evento.endereco">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <label for="">Link de fotos:</label>
+            <input type="text" placeholder="Coloque o link da(s) imagem(ens)" [(ngModel)]="evento.link_imagens">
+          </ion-col>
+        </ion-row>
+        
+        <ion-row> 
+          <ion-col>
+            <label for="">Descrição do evento:</label>
+            <textarea placeholder="Descreva tema, abordagem ou informações adicionais" [(ngModel)]="evento.descricao"></textarea>
+          </ion-col>
+        </ion-row>
+        <hr>
+        
+        <ion-row>
+          <ion-col>
+            <hr>
+            <button class="btn" style="float: right;" (click)="validar()">Salvar</button>
+          </ion-col>
+        </ion-row>
+        <hr>
+
+      </ion-grid>
+
+    </div>
+
+ 
+
+</ion-content>

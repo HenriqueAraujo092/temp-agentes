@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Recuperar Senha </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="ion-text-center">
+
+  <ion-item>
+    <ion-label position="floating">Digite seu email</ion-label>
+    <ion-input [(ngModel)]="email" type="text"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="passwordRecover()" color="primary"> Recuperar </ion-button>
+
+  <br/>
+
+  <div (click)="goToLogin()">
+    <strong> Retornar para login </strong>
+  </div>
+
+</ion-content>

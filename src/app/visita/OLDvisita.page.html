@@ -1,0 +1,62 @@
+<ion-header>
+  <navapp></navapp>
+</ion-header>
+
+<ion-content>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button>
+            <ion-icon name="arrow-round-up"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="top">
+          <ion-fab-button  (click)="redirecionar()"><ion-icon name="add"></ion-icon></ion-fab-button>
+          <ion-fab-button (click)="pesquisar()"><ion-icon name="sync"></ion-icon></ion-fab-button>
+        </ion-fab-list>
+    
+      </ion-fab>
+    <p align="center" style="font-size: 150%;"><b>Lista de visitas</b></p>
+      <div class="visita" *ngFor="let item of visitas">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <label><b>Responsável familiar:</b> {{item.responsavel_familiar}}</label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <label><b>NIS:</b> {{item.nis}}</label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <label><b>Endereço:</b> Rua: {{familia.rua}}<br>
+                     <b>Nº:</b> {{familia.numero_casa}}<br>
+                     <b>complemento:</b> {{familia.complemento}}<br>
+                     <b>Bairro:</b> {{familia.bairro}}<br>
+                     <b>CEP:</b> {{familia.cep}}<br>
+                     <b>Município:</b> {{familia.municipio}}<br>
+                     <b>Distrito:</b> {{familia.distrito}}</label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <label><b>Data:</b> {{item.data | date:'shortDate' }}</label>
+            </ion-col>
+            <ion-col>
+              <label><b>Horario:</b> {{item.hora}}</label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <label><b>Agente:</b> {{item.agente_nome}}</label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <label><a href="http://{{item.link_imagens}}"><b>Link das imagens</b></a></label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        
+      </div>
+      <h1 align="center" *ngIf="vazio==true" class="visita" style="border-radius:5px;padding:5px">Sem visitas cadastradas</h1>
+</ion-content>

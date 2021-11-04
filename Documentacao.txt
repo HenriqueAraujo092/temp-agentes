@@ -1,0 +1,128 @@
+﻿INICIO {
+	- Criar banco de dados 'app_agente-leitura', usuario 'postgres' e senha 'postgres'
+	- Apos colocar backend para iniciar, rodar os seguintes comandos...
+	$ ./node_modules/.bin/sequelize db:migrate // Criar tabelas do banco
+	$ ./node_modules/.bin/sequelize db:seed:all // Criar registro iniciais
+
+	*** login padrao de plataforma WEB:
+	- email: adminSecult
+	- senha: #Cetic911
+}
+
+ionic {
+    Como rodar o app em modo debug no aparelho {
+        Exemplo:
+        > $ ionic cordova run android --target=0051384697  << ID DO APARELHO
+    }
+
+    passando parametros por rotas {
+        https://stackoverflow.com/questions/44864303/send-data-through-routing-paths-in-angular
+    }
+
+    publicar ionic na google play {
+        A SENHA DA CHAVE ATUAL É : 123456
+
+        Ref: https://www.youtube.com/watch?v=GjOt_GY-7AY
+        Publicando IONIC3 na Google play
+
+        Antes de tudo ir em config.xml e alterar o valor de <widget id="io.ionic.{NOME_AQUI}">
+        e versão...
+            
+
+        1 Gerar a versao de release
+            cordova build --release --prod  android
+            (possivel saida em : platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk)
+            
+        2 Gerar a chave criptografica para assinar o aplicativo
+            keytool -genkey -v -keystore minha-chave.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+            -> digite a senha
+            -> Preencha as informações
+            -> Pressione enter para a senha acima ser a mesma senha novamente...
+            EX: {
+                Qual é o seu nome e o seu sobrenome?
+                [Unknown]:  Secult
+                Qual é o nome da sua unidade organizacional?
+                [Unknown]:  Brazil
+                Qual é o nome da sua empresa?
+                [Unknown]:  null
+                Qual é o nome da sua Cidade ou Localidade?
+                [Unknown]:  Fortaleza
+                Qual é o nome do seu Estado ou Município?
+                [Unknown]:  Ceara
+                Quais são as duas letras do código do país desta unidade?
+                [Unknown]:  BR
+                CN=Secult, OU=Brazil, O=null, L=Fortaleza, ST=Ceara, C=BR Está correto?
+                [não]:  sim
+            }
+            A chave ira ser gerada no path que esta sendo chamada os comandos acima
+            
+        3 Assinar o APK
+            jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore <nome_da_chave> <path_apk_release> <keygen_alias_name>
+            ex: jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore minha-chave.keystore platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk alias_name
+            -> coloque a senha quando pedir
+            Sucesso, APK assinado
+            
+        4 Gerar um novo APK em cima do APK assinado (sei la porque disso)
+            <path_android_build_tools>/zipalign -v 4 <path_apk_release_assinado> <Novo_nome_para_apk>.apk
+            EX: ../../../src/build-tools/28.0.3//zipalign.exe -v 4 platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk AgentesDeLeitura.apk
+            Sucesso, Novo app gerado no path
+            
+    }
+}
+
+backend {
+
+    possiveis Bugs {
+        > a maioria dos relacionamentos sao "BelongTo", talvez esteja faltando "HasOne", "hasMany", etc...
+        > tabela agent_family POSSIVELMENTE pode estar com os relacionamentos errados pois é uma tebela com 3 chaves_estrangeiras
+    }
+
+    pedencias: {
+        > alterar codigo/migrations/banco de portugues para ingles
+	> criar seeder de renda buta de familia
+    }
+
+    tutorial sobre autenticação com passport e JWT : https://tableless.com.br/autenticar-usuarios-com-jwt-e-passport/
+
+    Sequelize : {
+        manyToMany stackOverflow : https://stackoverflow.com/questions/22958683/how-to-implement-many-to-many-association-in-sequelize
+
+        > AVISO {
+            models/migrations de nomes compostos (ex: alterar nome), devem usar undescore em vez de camelCase
+            Exemplo: alterar_nome <<< CORRETO, alterarNome <<< ERRADO
+        }
+        > comandos no sequelize: $ ./node_modules/.bin/sequelize {COMANDO_AQUI}
+
+        FAZER SEMPRE QUE ADICIONAR UMA NOVA MODEL / ASSOCIAÇÃO {
+            > verificar se o "static associate" esta correto
+            > verificar se o nome da Classe da model esta correto
+            > adicionar no migrations/index.js
+        }
+        
+        seeds {
+            > rodar seeds : ./node_modules/.bin/sequelize db:seed:all
+
+            > criar seed : ./node_modules/.bin/sequelize seed:generate --name {NOME_DA_SEED}
+        }
+
+        migrations {
+	
+	    *ATENÇAO - as migrations somente vao rodar com a versao do node 12.18.2. dica, utilizar a ferramenta "nvm" para gerenciamento das versoes
+
+            > criar migration : $ ./node_modules/.bin/sequelize migration:create --name={NOME_DA_MIGRATION}
+            > rodar migration : $ ./node_modules/.bin/sequelize db:migrate
+        }
+
+        models {
+            criar models e migrations : $ npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string --models-path "C:\ionic\agente-de-leitura-app\backend\src\models"
+
+            npx sequelize-cli model:generate --name Agent --attributes name:string,cpf:string,email:string,rg:string,phone:string,bank:string,agency:string,bank_account_number:string,bank_account_type:string,whatsapp:string,facebook:string,instagram:string,twitter:string --models-path "C:\ionic\agente-de-leitura-app\backend\src\models"
+        }
+    }
+
+    
+    models {
+        criar models : $ npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string --models-path "C:\ionic\agente
+-de-leitura-app\backend\src\models"
+    }
+}

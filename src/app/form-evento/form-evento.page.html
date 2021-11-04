@@ -1,0 +1,103 @@
+<ion-header>
+ <navapp></navapp>
+</ion-header>
+
+<ion-content padding>
+  <!-- <h2 align="center">Cadastro de Eventos</h2> -->
+
+  <ion-row>
+
+    <ion-col> 
+        <ion-item>
+            <ion-label position="floating">CEP</ion-label>
+            <ion-input [(ngModel)]="cep"></ion-input>
+        </ion-item>
+    </ion-col>
+
+    <ion-col> 
+        <ion-button (click)="findCep()" color="primary"> Pesquisar </ion-button>
+    </ion-col>
+
+  </ion-row>
+
+  <ion-item>
+    <ion-label> Estado </ion-label>
+    <ion-select [(ngModel)]="selectedState" okText="OK" cancelText="Cancelar" (ionChange)="getCitiesFromState($event)">
+        <ion-select-option *ngFor="let state of states" value="{{state.id}}">{{state.name}} - {{state.uf}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item *ngIf="cities">
+    <ion-label> Cidade </ion-label>
+    <ion-select [(ngModel)]="selectedCity" okText="OK" cancelText="Cancelar" (ionChange)="getNeighborhoodsFromCity($event)">
+        <ion-select-option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item *ngIf="cities && neighborhoods">
+    <ion-label> Bairro </ion-label>
+    <ion-select [(ngModel)]="selectedNeighborhood" okText="OK" cancelText="Cancelar">
+        <ion-select-option *ngFor="let neighborhood of neighborhoods" value="{{neighborhood.id}}">{{neighborhood.name}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Logradouro</ion-label>
+    <ion-input [(ngModel)]="logradouro"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Numero</ion-label>
+    <ion-input [(ngModel)]="number"></ion-input>
+  </ion-item>
+
+  <ion-item >
+    <ion-label position="floating">Local</ion-label>
+    <ion-input [(ngModel)]="event.place"></ion-input>
+  </ion-item>
+
+
+  <ion-item >
+    <ion-label position="floating">Nome do evento</ion-label>
+    <ion-input [(ngModel)]="event.name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <label>Data do evento</label><br>
+    <input type="date" [(ngModel)]="event.date"><br><br>
+  </ion-item>
+
+  <ion-item>
+    <label>Horário do evento </label><br>
+    <input type="time" [(ngModel)]="event.hour"><br><br>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label position="floating">Complemento do endereço</ion-label>
+    <ion-input [(ngModel)]="complement"></ion-input>
+  </ion-item>
+
+  <!-- <ion-item>
+    <ion-label position="floating">CEP</ion-label>
+    <ion-input type="number" [(ngModel)]="cep"></ion-input>
+  </ion-item> -->
+
+  <div style="margin: 8px">
+    <div>Descrição do evento</div>
+    <textarea style="width: 100%;" [(ngModel)]="event.description" placeholder="Escreva aqui" rows="5" maxLength="200"></textarea>
+  </div>
+
+  <ion-item>
+    <ion-label position="floating">Link da imagem</ion-label>
+    <ion-input [(ngModel)]="event.image_link"></ion-input>
+  </ion-item>
+
+  <ion-button *ngIf="!eventIdAlreadyExists" expand="full" (click)="create()"> Criar Evento </ion-button>
+
+  <ion-button *ngIf="eventIdAlreadyExists" expand="full" (click)="updateEvent()" color="warning"> <span style="color: black;">Salvar alterações</span> </ion-button>
+
+
+
+ 
+
+</ion-content>

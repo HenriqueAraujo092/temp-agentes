@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="ion-text-center">
+
+  <ion-item>
+    <ion-label position="floating">Nome</ion-label>
+    <ion-input [(ngModel)]="name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input [(ngModel)]="email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">CPF</ion-label>
+    <ion-input type="number" [(ngModel)]="cpf"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Senha</ion-label>
+    <ion-input [(ngModel)]="password" type="password"></ion-input>
+  </ion-item>
+
+  <!-- <ion-item>
+    <ion-label position="floating">Confirmar Senha</ion-label>
+    <ion-input type="password"></ion-input>
+  </ion-item> -->
+
+  <br/>
+
+  <ion-button expand="block" (click)="register()" color="primary">Cadastrar</ion-button>
+
+  <br/>
+
+  <div (click)="goToLogin()">
+    <strong> Já tenho uma conta </strong>
+  </div>
+
+</ion-content>

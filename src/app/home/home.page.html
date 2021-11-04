@@ -1,0 +1,43 @@
+<ion-header>
+    <navapp ></navapp>
+</ion-header>
+<ion-content>
+    <div>
+        <div class="nomeSuperior" align=center>
+            <label id="nomeMaior">{{nome | uppercase}} </label><br>
+            <label>{{funcaoUser}}</label>
+        </div>
+        <div class="visitas" style="padding: 20px;">
+            <ion-card class="card" routerLink="/form-familia">
+                <ion-card-header>
+                    <ion-card-title style="color: white;"><ion-icon name="contacts"></ion-icon> Adicionar família</ion-card-title>
+                    <ion-card-subtitle style="color: #fffffff3; font-weight: bold;">Cadastre aqui uma nova família</ion-card-subtitle>
+                </ion-card-header>
+            </ion-card>
+            <ion-card class="card" routerLink="/pesq-familia">
+                <ion-card-header>
+                    <ion-card-title style="color: white;"><ion-icon name="search"></ion-icon> Consultar família</ion-card-title>
+                    <ion-card-subtitle style="color: #fffffff3; font-weight: bold;">Pesquise aqui uma família</ion-card-subtitle>
+                </ion-card-header>
+            </ion-card>
+            <ion-card class="card" routerLink="/pesq-visita">
+                <ion-card-header>
+                    <ion-card-title style="color: white;"> <ion-icon name="home"></ion-icon> Listar Visitas</ion-card-title>
+                    <ion-card-subtitle style="color: #fffffff3; font-weight: bold;">Pesquise aqui as visitas da família</ion-card-subtitle>
+                </ion-card-header>
+            </ion-card>
+            <ion-card class="card" routerLink="/form-evento">
+                <ion-card-header>
+                    <ion-card-title style="color: white;"> <ion-icon name="book"></ion-icon> Adicionar evento</ion-card-title>
+                    <ion-card-subtitle style="color: #fffffff3; font-weight: bold;">Cadastre aqui um novo evento</ion-card-subtitle>
+                </ion-card-header>
+            </ion-card>
+            <ion-card class="card" routerLink="/evento">
+                <ion-card-header>
+                    <ion-card-title style="color: white;"> <ion-icon name="calendar"></ion-icon> Listar eventos</ion-card-title>
+                    <ion-card-subtitle style="color: #fffffff3; font-weight: bold;">Veja aqui os eventos cadastrados</ion-card-subtitle>
+                </ion-card-header>
+            </ion-card>
+        </div>
+    </div>
+</ion-content>

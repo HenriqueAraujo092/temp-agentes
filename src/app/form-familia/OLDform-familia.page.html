@@ -1,0 +1,142 @@
+<ion-header>
+  <navapp></navapp>
+</ion-header>
+
+<ion-content>
+  
+  <p align="center" style="font-size: 130%;">Cadastro da família</p>
+  <div class="form">
+  
+      <div class="tela1" [class.oculto]="ocultar==true">
+        <label>Dados do Responsável familiar</label>
+        
+        <ion-grid>
+          <ion-row>
+            <ion-col> <label for="">Nome do responsavel:</label>
+              <input type="text" [(ngModel)]="family.family_responsible"></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col> <label for="">NIS :</label>
+              <input type="number" [(ngModel)]="family.nis"></ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col> <label for="">Endereço :</label>
+              <input type="text" [(ngModel)]="familia.rua"></ion-col>
+          </ion-row>
+
+
+          <ion-row>
+            <ion-col>
+              <label for="">Número da casa:</label>
+              <input type="text" [(ngModel)]="familia.numero_casa">
+            </ion-col>
+            <ion-col>
+              <label for="">Complemento:</label>
+              <input type="text" [(ngModel)]="familia.complemento">
+            </ion-col>
+          </ion-row>
+
+
+          <ion-row>
+            <ion-col> <label for="">Bairro :</label>
+              <input type="text" [(ngModel)]="familia.bairro">
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col> <label for="">CEP :</label>
+              <input type="number" [(ngModel)]="familia.cep">
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <label>Municipio</label>
+              <select [(ngModel)]="familia.municipio">
+                <option *ngFor="let item of municipios" [ngValue]="item">{{item}}</option>      
+              </select>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col> <label for="">Distrito :</label>
+              <input type="text" [(ngModel)]="familia.distrito">
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col> <label for="">Telefone :</label>
+              <input type="text" [(ngModel)]="familia.telefone">
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+
+        <div> <button class="btn" style="float: right;margin-top: 2%;margin-botton:2%" (click)="avancar()">Avançar</button></div><br>
+       
+      </div>
+      <div class="tela2" [class.oculto]="ocultar==false">
+        <label> Dados Sociais </label>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <label>Acesso D'água</label>
+              <select [(ngModel)]="familia.acesso_agua">
+                <option value=1 >SISTEMA D'ÁGUA</option>
+                <option value=2>POÇO</option>
+                <option value=3>AÇUDE</option>
+                <option value=4>CISTERNA</option>
+              </select>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <label>Acesso a rede de esgoto</label>
+              <select [(ngModel)]="familia.acesso_esgoto">
+                <option value=1>SIM</option>
+                <option value=2>NÃO</option>
+              </select>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <label>Acesso a energia</label>
+              <select [(ngModel)]="familia.acesso_energia">
+                <option value=1>SIM</option>
+                <option value=2>NÃO</option>
+              </select>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <label>Locomoção utilizada</label>
+              <select [(ngModel)]="familia.locomocao">
+                <option value=1>A PÉ</option>
+                <option value=2>AUTOMOTIVO</option>
+                <option value=3>ANIMAL</option>
+              </select>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <label>Renda per capta</label>
+              <select [(ngModel)]="familia.renda_per_capta">
+                <option value=1>ATÉ MEIO SALÁRIO MÍNIMO</option>
+                <option value=2>ATÉ UM SALÁRIO</option>
+                <option value=3>MAIS DE UM SALÁRIO</option>
+              </select>
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+        <div style="padding-top: 5%;">
+          <button class="btn" style="float: right;" (click)="checar()" >Salvar</button>
+          <button class="btn" style="float: left;margin-botton:2%" (click)="avancar()" >Voltar</button>
+        </div>
+        
+      </div>
+   
+  </div>
+  <!-- {{criado}} -->
+</ion-content>

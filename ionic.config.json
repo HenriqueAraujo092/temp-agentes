@@ -1,0 +1,7 @@
+{
+  "name": "AgenteLeitura",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

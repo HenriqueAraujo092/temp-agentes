@@ -1,0 +1,55 @@
+<ion-header>
+  <navapp></navapp>
+</ion-header>
+
+<ion-content>
+
+  <ion-button (click)="goToEditFamily()" expand="block" color="warning" style="margin-left: 4%;margin-right: 4%;"><span style="color:black">Editar familia</span></ion-button>
+
+  <h2 align="center">Identificação da família </h2>
+
+  <div class="identificacao" *ngIf="family!=null; else teste">
+      <ul class="card_visitas">
+          <li>Responsável: {{ family.family_responsible}} </li><br>
+          <li>Endereco: {{family.address.logradouro}} 
+              <br /> 
+              CEP: {{ family.address.cep }} 
+              <br>
+              Casa: {{family.address.complement}} - Numero: {{family.address.number}}</li><br>
+          <li>Renda: {{family.revenue.description}} </li><br>
+          <li>NIS: {{ family.nis}} </li><br>
+      </ul>
+      
+  </div>
+  <h3 align="center">Membros</h3>
+  <div *ngIf="familia_membros" class="membros"  >
+    
+    <div *ngFor="let item of familia_membros" >
+      
+      <!-- <p class="item" align="center">{{item.name}}</p> -->
+
+      <ion-row>
+
+        <ion-col> 
+          <p class="item" align="center">{{item.name}}</p>
+        </ion-col>
+
+        <ion-col> 
+            <ion-button (click)="goToEditMember(item.id)" color="warning"> <span style="color:black">Editar</span> </ion-button>
+        </ion-col>
+
+    </ion-row>
+      
+    </div>
+    
+  </div>
+  <ng-template #teste>
+    <p>Carregando...</p>
+
+  </ng-template>
+  <a routerLink="/familia/form-membro/{{id_familia}}"><button class="btn" style="
+    margin-left: 33%;
+    margin-right: 30%;
+    margin-top: 3%;
+  ">Novo Membro</button></a><br><br>
+</ion-content>

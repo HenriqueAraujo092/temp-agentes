@@ -1,0 +1,102 @@
+<ion-header>
+  <navapp></navapp>
+</ion-header>
+
+<ion-content padding>
+
+
+    
+  <!-- <h2 align="center">Cadastro do membro </h2> -->
+
+  <!-- <ion-button expand="full" (click)="junk()"> JUNK </ion-button> -->
+
+  <ion-item>
+    <ion-label position="floating"> Nome </ion-label>
+    <ion-input [(ngModel)]="member.name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <label>Data de Nascimento </label><br>
+    <input [(ngModel)]="member.birthdate" type="date" ><br><br>
+  </ion-item>
+
+  <ion-item>
+    <ion-label> Gosta de ler </ion-label>
+    <ion-toggle [(ngModel)]="member.like_read"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
+    <ion-label> Livro que esta lendo foi indicado pelo agente? </ion-label>
+    <ion-toggle [(ngModel)]="member.agent_indication_book"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
+    <ion-label> Acha que ler é importante </ion-label>
+    <ion-toggle [(ngModel)]="member.read_important"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
+    <ion-label> Genero </ion-label>
+    <ion-select [(ngModel)]="member.gender_id" okText="OK" cancelText="Cancelar" >
+        <ion-select-option *ngFor="let gender of genders" value="{{gender.id}}"> {{gender.label}} </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label> Parentesco </ion-label>
+    <ion-select [(ngModel)]="member.kinship_id" okText="OK" cancelText="Cancelar" >
+        <ion-select-option *ngFor="let kinship of kinships" value="{{kinship.id}}"> {{kinship.label}} </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label> Escolaridade </ion-label>
+    <ion-select [(ngModel)]="member.scholarity_id" okText="OK" cancelText="Cancelar" >
+        <ion-select-option *ngFor="let scholarity of scholarities" value="{{scholarity.id}}"> {{scholarity.label}} </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label> Possui deficiência </ion-label>
+    <ion-select [(ngModel)]="member.deficiency_id" okText="OK" cancelText="Cancelar" >
+        <ion-select-option value="0">Não</ion-select-option>
+        <ion-select-option *ngFor="let deficiency of deficiencies" value="{{deficiency.id}}"> {{deficiency.label}} </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label> Rotina de leitura do membro </ion-label>
+    <ion-select [(ngModel)]="member.routine_id" okText="OK" cancelText="Cancelar" >
+        <ion-select-option *ngFor="let routine of routines" value="{{routine.id}}"> {{routine.label}} </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label> Tipo de leitura do membro </ion-label>
+    <ion-select [(ngModel)]="member.read_type_id" okText="OK" cancelText="Cancelar" >
+        <ion-select-option *ngFor="let readType of readTypes" value="{{readType.id}}"> {{readType.label}} </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label> Acervo </ion-label>
+    <ion-select [(ngModel)]="member.collection_id" okText="OK" cancelText="Cancelar" >
+        <ion-select-option *ngFor="let collection of collections" value="{{collection.id}}"> {{collection.label}} </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label> Ler ajuda arrumar emprego </ion-label>
+    <ion-select [(ngModel)]="member.read_job_id" okText="OK" cancelText="Cancelar" >
+        <ion-select-option *ngFor="let readJob of readJobs" value="{{readJob.id}}"> {{readJob.label}} </ion-select-option>
+    </ion-select>
+  </ion-item>
+  
+  
+  <ion-button *ngIf="!memberIdAlreadyExists" expand="full" (click)="criarMembro()"> Cadastrar membro </ion-button>
+    
+  <ion-button *ngIf="memberIdAlreadyExists" expand="full" (click)="updateMember()" color="warning"> <span style="color: black;">Salvar alterações</span> </ion-button>
+
+    
+  <br><br>
+</ion-content>
